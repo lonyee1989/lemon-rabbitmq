@@ -58,12 +58,12 @@ public void onMessage(Message message, Channel channel) throws IOException {
 			Object service = ctx.getBean(message.getMessageProperties().getHeaders().get("ServiceName").toString());
 			String serviceMethodName = message.getMessageProperties().getHeaders().get("ServiceMethodName").toString();
 			Method method = service.getClass().getMethod(serviceMethodName, msg.getClass());
-	    method.invoke(service, msg);
-	    //确认消息成功消费
-	    channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+	       method.invoke(service, msg);
+	       //确认消息成功消费
+	       channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			System.out.println("------ err"+ e.getMessage());
-	    channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
+	       channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
 		}
 }
 ```
