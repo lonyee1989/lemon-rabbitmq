@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.lemon</groupId>
+    <artifactId>lemon-boot-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>lemon-rabbitmq</artifactId>
+  <name>lemon-rabbitmq</name>
+  <description>rabbitmq模块</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+  	<dependency>
+		<groupId>cn.lemon</groupId>
+		<artifactId>lemon-rabbitmq-protocol</artifactId>
+		<version>${project.parent.version}</version>
+	</dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-amqp</artifactId>  
+    </dependency>
+  </dependencies>
+</project>

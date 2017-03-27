@@ -1,0 +1,12 @@
+spring:
+  rabbitmq:
+    appid: 9A064E7A180DD4790F827F546F699BB3
+    queuename: Q2
+    exchange: exchange2
+    routingkey: routingkey2
+    addresses: 192.168.99.100:32780   # 5672
+    username: guest
+    password: guest
+    publisherConfirms: true
+    virtual-host: /
+
