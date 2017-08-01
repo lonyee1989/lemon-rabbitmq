@@ -1,12 +1,32 @@
-*.class
+# Operating System Files
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+*.DS_Store
+Thumbs.db
+*.sw?
+.#*
+*#
+*~
+*.sublime-*
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Build Artifacts
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+.gradle/
+build/
+target/
+bin/
+dependency-reduced-pom.xml
+
+# Eclipse Project Files
+
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA Files
+
+*.iml
+*.ipr
+*.iws
+*.idea
+
+README.html
