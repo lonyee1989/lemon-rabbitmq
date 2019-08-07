@@ -1,10 +1,11 @@
 package cn.lemon.rabbitmq.producer;
 
-import org.springframework.amqp.rabbit.support.CorrelationData;
+import cn.lemon.rabbitmq.protocol.User;
 import org.springframework.stereotype.Service;
 
-import cn.lemon.rabbitmq.protocol.User;
-
+/**
+ * 业务消息发送服务
+ */
 @Service
 public class TestProducerService extends BasicService {
 	
@@ -15,15 +16,5 @@ public class TestProducerService extends BasicService {
 		user.setRemark(remark);
 		System.out.println("sender: "+ user.toString());
 		this.sendMessage("consumerService", "getMessage", ""+user.getId(), user);
-	}
-
-	@Override
-	public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-		System.out.println("回调id:" + correlationData);
-        if (ack) {
-            System.out.println("消息发送成功");
-        } else {
-            System.out.println("消息发送失败:" + cause);
-        }
 	}
 }

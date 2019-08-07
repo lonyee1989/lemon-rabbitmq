@@ -1,21 +1,19 @@
 package cn.lemon.rabbitmq.producer;
 
-import java.util.Date;
-import java.util.UUID;
-
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.core.RabbitTemplate.ConfirmCallback;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Value;
 
-public abstract class BasicService implements ConfirmCallback {
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.UUID;
+
+public abstract class BasicService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Resource
@@ -27,7 +25,6 @@ public abstract class BasicService implements ConfirmCallback {
 
     public void sendMessage(final String serviceName, final String serviceMethodName,final String correlationId, Object request) {
     	logger.info("sendMessage [this.{}, serviceMethodName:{} serviceName:{} correlationId: {}]", this.getClass(), serviceMethodName, serviceName, correlationId);
-    	rabbitTemplate.setConfirmCallback(this);
     	rabbitTemplate.setCorrelationKey(correlationId);
     	rabbitTemplate.convertAndSend(routingkey, request, new MessagePostProcessor() {            
         	@Override
@@ -42,11 +39,5 @@ public abstract class BasicService implements ConfirmCallback {
             }
         }, new CorrelationData(correlationId));
     }
-
-    /**
-     * 抽象回调方法
-     */
-	@Override
-	public abstract void confirm(CorrelationData correlationData, boolean ack, String cause);
 	
 }
