@@ -1,6 +1,11 @@
 # lemon-rabbitmq
 乐檬框架之rabbitMQ的解耦实现方式（基于springboot框架）
 
+[![openjdk](https://img.shields.io/badge/jdk-v1.7%2B-red)](http://openjdk.java.net)
+[![License](https://img.shields.io/github/license/weiecho/sentinel-client)](https://opensource.org/licenses/Apache-2.0)
+
+
+
 lemon-rabbitmq   消息生产端
 
 lemon-rabbitmq-protocol   消息协议层
